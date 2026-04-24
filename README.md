@@ -2,7 +2,7 @@
 
 # 🛡️ Bangla / Banglish Toxicity Classifier
 
-**HER-WILL AI for Digital Safety Datathon 2026**
+
 
 *Cross-lingual hate speech detection for Bengali, English, and Banglish social media text*
 
@@ -19,11 +19,7 @@
 
 ## 📊 Pipeline Overview
 
-![Trilingual Toxicity Classification Pipeline](https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/trilingual_toxicity_classification_pipeline1.png)
 
-> **Figure 1** — End-to-end pipeline across four stages: Data Engineering → TextCNN Architecture → Optimization & Training → Evaluation & Finalization
-
----
 
 ## 📋 Table of Contents
 
@@ -319,67 +315,3 @@ The `parameters` column is populated with the `thop.profile()` NOP count, verifi
 
 ---
 
-## ✅ Marking Criteria
-
-> Official Rubric: **Code Quality & Technical Implementation — 25%**
-> Each criterion maps directly to a numbered notebook step for easy verification.
-
-<details>
-<summary><strong>⭐ 5 / 5 — Data Pre-processing & Feature Engineering</strong></summary>
-
-| Evidence | Notebook Step |
-|----------|:-------------:|
-| Language detection via Unicode ranges (`U+0980–U+09FF`) classifies each post as Bengali, Banglish, or English | Step 6 |
-| URL removal, `@mention` removal, hashtag normalisation (`#` stripped, word kept), script-aware lowercasing (ASCII only; Bengali preserved) | Step 7 |
-| Top-30,000 vocabulary built from training corpus; OOV words mapped to `<UNK>` | Step 8 |
-| Inverse-frequency class weights computed and applied to CrossEntropy loss to correct for class imbalance | Step 10 |
-| Dynamic per-batch padding reduces wasted computation vs. padding all sequences to global `MAX_LENGTH` | Step 11 |
-
-</details>
-
-<details>
-<summary><strong>⭐ 5 / 5 — Model Implementation</strong></summary>
-
-| Evidence | Notebook Step |
-|----------|:-------------:|
-| MUSE-aligned FastText vectors (EN + BN) loaded into one shared 300-dim matrix — bilingual, no language gate needed at inference | Step 9 |
-| TextCNN with 3 parallel `Conv1d` layers (k=2,3,4) for n-gram detection, global max pooling, dropout, and linear head | Step 12 |
-| Embedding frozen (`freeze=True`): ~9M parameters excluded from NOP denominator, maximising F1NOP | Step 12 |
-| AdamW optimizer with weight decay; weighted CrossEntropy with label smoothing (0.1); `ReduceLROnPlateau` LR scheduler | Step 13 |
-| NOP re-verified using the official `thop.profile()` call format before submission | Step 18 |
-
-</details>
-
-<details>
-<summary><strong>⭐ 5 / 5 — Code Clarity & Organisation</strong></summary>
-
-| Evidence | Notebook Step |
-|----------|:-------------:|
-| 18 clearly numbered and titled steps, each with a one-line purpose comment at the top of the cell | All Steps |
-| Single configuration cell for all hyperparameters and paths — no magic numbers elsewhere in the notebook | Step 3 |
-| Small, single-purpose functions: `preprocess_text()`, `detect_language()`, `train_one_epoch()`, `evaluate()` | Steps 6–14 |
-| Consistent naming convention: `UPPER_CASE` for constants, `snake_case` for all variables and functions | Throughout |
-| No dead code, no commented-out blocks, no duplicate definitions in the final submitted notebook | — |
-
-</details>
-
-<details>
-<summary><strong>⭐ 5 / 5 — Documentation & Method Explanation</strong></summary>
-
-| Evidence | Location |
-|----------|----------|
-| Full pipeline diagram (Figure 1) with all four stages labelled | `README.md` / `README.html` |
-| Markdown cells preceding every step explain *what* the step does and *why* the design choice was made | Notebook |
-| Docstrings on every class and function (`TextCNN`, `ToxicityDataset`, `preprocess_text`, `detect_language`, `load_aligned_fasttext`) | Notebook |
-| Hyperparameter rationale in configuration cell comments | Step 3 |
-| This README providing end-to-end documentation, reproducibility instructions, and marking evidence map | `README.md` |
-
-</details>
-
----
-
-<div align="center">
-
-*Submitted as part of the HER-WILL AI for Digital Safety Datathon 2026*
-
-</div>
