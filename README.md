@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🛡️ Bangla / Banglish Toxicity Classifier
+# 🛡️ Bangla / Banglish / English Toxicity Classifier
 
-**HER-WILL AI for Digital Safety Datathon 2026**
+
 
 *Cross-lingual hate speech detection for Bengali, English, and Banglish social media text*
 
@@ -21,9 +21,7 @@
 
 ![Trilingual Toxicity Classification Pipeline](trilingual_toxicity_classification_pipeline1.png)
 
-> **Figure 1** — End-to-end pipeline across four stages: Data Engineering → TextCNN Architecture → Optimization & Training → Evaluation & Finalization
-
----
+<img src="trilingual_toxicity_classification_pipeline1.png" ...>
 
 ## 📋 Table of Contents
 
