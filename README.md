@@ -309,9 +309,5 @@ id,y_pred,parameters
 1,0,10851
 2,1,10851
 ...
-```
 
-The `parameters` column is populated with the `thop.profile()` NOP count, verified to match the official competition scorer's expected format.
-
----
 
