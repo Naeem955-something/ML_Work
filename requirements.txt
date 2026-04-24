@@ -1,0 +1,16 @@
+# ── Required Libraries ──────────────────────────────────────────
+# Platform : Kaggle Kernel (all packages below are pre-installed)
+# Install  : pip install -r requirements.txt  (only if running locally)
+
+torch>=2.0.0
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+thop>=0.1.1          # NOP profiler — only package NOT pre-installed on Kaggle
+matplotlib>=3.7.0
+seaborn>=0.12.0
+tqdm>=4.65.0
+
+# ── Required Kaggle Datasets (attach before running) ────────────
+# 1. her-will-ai-for-digital-safety-datathon-2026   → train.csv, test.csv, sample_submission.csv
+# 2. mohammadnaeemmollah/fasttext-aligned            → wiki.en.align.vec, wiki.bn.align.vec
